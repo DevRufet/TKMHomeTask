@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TKM</title>
+    <style>
+       
+        .TKM{
+            width: 500px;
+            height: 500px;
+            background-color: aqua;
+            display: flex ;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            margin-left: 500px;
+            margin-top: 130px;
+
+        }
+        .TKM_all{
+           
+            
+        }
+        .TKM_inp{
+            width: 300px;
+            height: 30px;
+            border-radius: 10px;
+        }
+        .TKM_btn{
+            width: 80px;
+            height: 35px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="TKM">
+        <h2>Name of daş,kağız ,qayçı</h2>
+        <div class="TKM_all">
+        <input type="text" placeholder="Enter to word" class="TKM_inp" >
+        <button class="TKM_btn">Enter</button>
+        </div>
+        <h1 class="TKM_h1">Win!!!!!!!!!!!!</h1>
+        <h1 class="TKM_h2"></h1>
+        <h1 class="TKM_h3"></h1>
+        <!-- Lose -->
+        <!-- daş,kağız ,qayçı -->
+    </div>
+    <script>
+        const inp=document.querySelector(".TKM_inp")
+        const btn=document.querySelector(".TKM_btn")
+        const h1=document.querySelector(".TKM_h1")
+        const h2=document.querySelector(".TKM_h2")
+        const h3=document.querySelector(".TKM_h3")
+        let arr=["daş","kağız" ,"qayçı"]
+        btn.addEventListener("click",function(){
+        let randomstr=Math.floor(Math.random()*3)
+        if((inp.value===arr[0]) || (inp.value===arr[1]) || (inp.value===arr[2]) ){
+            if(arr[randomstr]===inp.value){
+              h1.textContent=" Beraber qaldiniz"
+              h2.textContent=`User:${inp.value}`
+              h3.textContent=`PC:${arr[randomstr]}`
+        }
+        else if((arr[randomstr]===arr[0] && (inp.value===arr[1] || inp.value===arr[2] )) || (arr[randomstr]===arr[2] && ( inp.value===arr[1] ))){
+            h1.textContent=" Meglub oldunuz"
+            h2.textContent=`User:${inp.value}`
+            h3.textContent=`PC:${arr[randomstr]}`
+        }
+        else{
+            h1.textContent=" Qalib geldiniz"
+            h2.textContent=`User:${inp.value}`
+            h3.textContent=`PC:${arr[randomstr]}`
+        }
+        }
+        else{
+            h1.textContent="Duzgun sozu daxil edin"
+        }  
+        })
+    </script>
+</body>
+</html>
