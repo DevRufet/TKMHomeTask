@@ -41,11 +41,13 @@
         <input type="text" placeholder="Enter to word" class="TKM_inp" >
         <button class="TKM_btn">Enter</button>
         </div>
-        <h1 class="TKM_h1">Win!!!!!!!!!!!!</h1>
+        <h1 class="TKM_h1"></h1>
         <h1 class="TKM_h2"></h1>
         <h1 class="TKM_h3"></h1>
-        <!-- Lose -->
-        <!-- daş,kağız ,qayçı -->
+        <h1 class="TKM_h4"></h1>
+        <h1 class="TKM_h5"></h1>
+
+       
     </div>
     <script>
         const inp=document.querySelector(".TKM_inp")
@@ -53,28 +55,43 @@
         const h1=document.querySelector(".TKM_h1")
         const h2=document.querySelector(".TKM_h2")
         const h3=document.querySelector(".TKM_h3")
+        const h4=document.querySelector(".TKM_h4")
+        const h5=document.querySelector(".TKM_h5")
         let arr=["daş","kağız" ,"qayçı"]
+        let user=0
+        let pc=0
         btn.addEventListener("click",function(){
         let randomstr=Math.floor(Math.random()*3)
         if((inp.value===arr[0]) || (inp.value===arr[1]) || (inp.value===arr[2]) ){
             if(arr[randomstr]===inp.value){
-              h1.textContent=" Beraber qaldiniz"
+              h1.textContent="Beraber qaldiniz"
               h2.textContent=`User:${inp.value}`
               h3.textContent=`PC:${arr[randomstr]}`
+              h4.textContent=`user:${user} points`
+              h5.textContent=`pc:${pc} points`
         }
-        else if((arr[randomstr]===arr[0] && (inp.value===arr[1] || inp.value===arr[2] )) || (arr[randomstr]===arr[2] && ( inp.value===arr[1] ))){
-            h1.textContent=" Meglub oldunuz"
+        else if(((inp.value===arr[1] ) && arr[randomstr]===arr[0]) || (inp.value===arr[0] && arr[randomstr]===arr[2]) || (inp.value===arr[2]) && arr[randomstr]===arr[1]){
+            
+            h1.textContent="Qalib geldiniz"
             h2.textContent=`User:${inp.value}`
             h3.textContent=`PC:${arr[randomstr]}`
+            user+=1
+            h4.textContent=`user:${user} points`
+            h5.textContent=`pc:${pc} points`
         }
         else{
-            h1.textContent=" Qalib geldiniz"
+            h1.textContent="Meglub oldunuz"
             h2.textContent=`User:${inp.value}`
             h3.textContent=`PC:${arr[randomstr]}`
+            pc+=1
+            h4.textContent=`user:${user} points`
+            h5.textContent=`pc:${pc} points`
         }
         }
         else{
             h1.textContent="Duzgun sozu daxil edin"
+            h4.textContent=`user:${user} points`
+            h5.textContent=`pc:${pc} points`
         }  
         })
     </script>
